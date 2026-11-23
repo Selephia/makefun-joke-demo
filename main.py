@@ -16,6 +16,9 @@ JOKE = (
 
 
 def main() -> None:
+    # The gate accepts only UTF-8 text of 1 to 280 characters that is not
+    # all white space; fail loudly here rather than be scored invalid.
+    assert 1 <= len(JOKE) <= 280 and JOKE.strip(), "entry text out of gate range"
     out_dir = "/output"
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
